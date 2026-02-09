@@ -22,12 +22,38 @@ Prompts EXACTS a utiliser :
 5) "Entrez la duree moyenne d'un match de soccer suivi (en minutes) : "
 """
 
-# TODO: Lire le nom (str)
+# Lire le nom (str)
+nom = input("Entrez votre nom complet : ")
+# Lire les 4 valeurs (int)
+matchs_football = int(input("Entrez le nombre de matchs de football des Carabins suivis cet automne : "))
+duree_football = int(input("Entrez la duree moyenne d'un match de football suivi (en minutes) : "))
+matchs_soccer = int(input("Entrez le nombre de matchs de soccer feminin des Carabins suivis cet automne : "))
+duree_soccer = int(input("Entrez la duree moyenne d'un match de soccer suivi (en minutes) : "))
+# Valider les donnees (matchs >= 0, durees > 0)
+if matchs_football < 0 or matchs_soccer < 0:
+        print("Erreur - donnees invalides.")
+elif duree_football <= 0 or duree_soccer <= 0:
+    print("Erreur - donnees invalides.")
+else:
+# Calculer les minutes totales (football, soccer, total)
+        total_minutes_football = matchs_football * duree_football
+        total_minutes_soccer = matchs_soccer * duree_soccer
+        total_minutes = total_minutes_football + total_minutes_soccer
+        
+# Convertir en heures/minutes et afficher exactement 4 lignes
+        heures_football = total_minutes_football // 60
+        minutes_football = total_minutes_football % 60
+        
+        heures_soccer = total_minutes_soccer // 60
+        minutes_soccer = total_minutes_soccer % 60
+        
+        heures_total = total_minutes // 60
+        minutes_total = total_minutes % 60
 
-# TODO: Lire les 4 valeurs (int)
-
-# TODO: Valider les donnees (matchs >= 0, durees > 0)
-
-# TODO: Calculer les minutes totales (football, soccer, total)
-
-# TODO: Convertir en heures/minutes et afficher exactement 4 lignes
+        
+        print("Bonjour " + nom)
+        print("Football (carabins): " + str(matchs_football) + " match(s), " + 
+              str(heures_football) + "h" + str(minutes_football).zfill(2) + " de visionnage")
+        print("Soccer (carabins): " + str(matchs_soccer) + " match(s), " + 
+              str(heures_soccer) + "h" + str(minutes_soccer).zfill(2) + " de visionnage")
+        print("Total: " + str(heures_total) + "h" + str(minutes_total).zfill(2))
